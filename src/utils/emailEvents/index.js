@@ -7,7 +7,7 @@ export const eventEmitter = new EventEmitter()
 eventEmitter.on("sendEmail", async (data) =>{
   const {email} = data
   const token = await generateToken({payload: {email}, SIGNITURE: process.env.SIGNITURE, options: {expiresIn: 60*3}})
-  const link = `http://localhost:3000/users/confirmEmail/${token}`
+  const link = `https://saraha-app-mu-nine.vercel.app/users/confirmEmail/${token}`
 
   const isSent = await sendEmail({to: email, subject: 'Confirm your email', html: `<a href = '${link}'>Confirm Email</a>`})
 

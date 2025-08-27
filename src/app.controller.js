@@ -42,6 +42,10 @@ const bootstrap = () =>{
   app.use('/users', userRouter)
   app.use('/messages', messageRouter)
 
+  app.use('/', (req, res, next) =>{
+    return res.status(200).json({message: 'Welcome To Saraha App 😃'})
+  })
+
   app.use('{/*demo}', (req, res, next) =>{
     throw new Error(`Url Not Found ${req.originalUrl}`)
 })
